@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:13:08 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/30 05:17:39 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/30 05:54:11 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	fdf_countptrs(void *ptrs)
 	return ((int)res);
 }
 
-int	**fdf_getmatrix(char	***lines)
+int	**fdf_getmatrix(char	***lines) //нужно починить эту хуйню
 {
 	int	**res;
 	int	i;
@@ -138,7 +138,7 @@ int	**fdf_getmatrix(char	***lines)
 			if (ft_strchr(lines[i][j], ','))
 				res[i][2 * j + 1] = fdf_atoi_hex(ft_strchr(lines[i][j], 44) + 1);
 			else
-				res[i][2 * j + 1] = 0;
+				res[i][2 * j + 1] = 0xffffff;
 			j++;
 		}
 		res[i][j] = 0;
@@ -172,8 +172,12 @@ int	main(int argc, char **argv)
 	int		**matrix;
 
 	(void) fd;
-	fdf_checkfile(argc, argv[1]);
-	lines = fdf_secondsplit(argv[1]);
-	matrix = fdf_getmatrix (lines);
-	fdf_putmtx(matrix);
+	(void) matrix;
+	(void) lines;
+	(void) argc;
+	(void) argv;
+	// fdf_checkfile(argc, argv[1]);
+	// lines = fdf_secondsplit(argv[1]);
+	// matrix = fdf_getmatrix (lines);
+	// fdf_putmtx(matrix);
 }
