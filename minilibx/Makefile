@@ -8,8 +8,11 @@ else
 	endif
 endif
 
-libmlx.a: $(DIR)libmlx.a
+libmlx.a: mlx.h $(DIR)libmlx.a
 	cp $(DIR)libmlx.a libmlx.a
+
+mlx.h: $(DIR)mlx.h
+	cp $(DIR)mlx.h mlx.h
 
 $(DIR)libmlx.a:
 	make -s -C $(DIR);

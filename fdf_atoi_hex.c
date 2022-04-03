@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 04:38:26 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/30 05:17:08 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/03 05:02:27 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	fdf_atoi_hex(const char *str)
 	int		res;
 	char	sign;
 
+	if (!str || !*str)
+		return (0);
 	i = 0;
 	res = 0;
 	sign = 1;

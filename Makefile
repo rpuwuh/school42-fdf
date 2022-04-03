@@ -4,7 +4,7 @@ OBJDIR= ./obj/
 
 HEADER = fdf.h
 
-SRC = fdf_atoi_hex.c
+SRC = fdf_atoi_hex.c fdf_checkfile.c fdf_mallocandset.c fdf_free.c
 
 SRC_O = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -47,7 +47,7 @@ all: $(NAME) $(NAME_CHECKER)
 exec: all clean
 
 clean: 
-	rm -f $(LIBFT) $(GNL) $(SRC_O) $(OBJDIR)$(NAME).o $(OBJDIR)$(NAME_CHECKER).o
+	rm -f $(LIBFT) $(GNL) $(SRC_O) $(OBJDIR)$(NAME).o minilibx/mlx.h
 
 fclean: clean
 	rm -f $(NAME); rm -rf $(OBJDIR)

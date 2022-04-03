@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoetess <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 00:25:23 by bpoetess          #+#    #+#             */
-/*   Updated: 2021/10/25 18:51:00 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/03 04:48:45 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	ft_atoi(const char *str)
 	int		res;
 	char	sign;
 
+	if (!str || !*str)
+		return (0);
 	i = 0;
 	res = 0;
 	sign = 1;
