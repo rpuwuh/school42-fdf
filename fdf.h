@@ -6,14 +6,19 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/03 05:34:47 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/03 08:19:38 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# define FDF_HEIGHT 640
+# define FDF_WIDTH 480
+
 # include <fcntl.h>
+# include <math.h>
+
 # include "libft/libft.h"
 # include "get_next_line/get_next_line_bonus.h"
 # include "minilibx/mlx.h"
@@ -26,6 +31,9 @@ typedef struct s_glb
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
 }	t_glb;
 
 int		fdf_atoi_hex(const char *s);
