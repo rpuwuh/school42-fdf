@@ -1,7 +1,7 @@
 ifeq ($(shell uname),Darwin)
     DIR=minilibx_macos/
 else
-    ifeq ($(OS),Linux)
+    ifeq ($(shell uname),Linux)
 		DIR=minilibx-linux/
 	else
 		echo "Cannot recognize your system\n"; exit 1
