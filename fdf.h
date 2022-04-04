@@ -6,15 +6,15 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/03 08:19:38 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/04 20:44:57 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define FDF_HEIGHT 640
-# define FDF_WIDTH 480
+# define FDF_HEIGHT 720
+# define FDF_WIDTH 1280
 
 # include <fcntl.h>
 # include <math.h>
@@ -28,6 +28,8 @@ typedef struct s_glb
 	int		x;
 	int		y;
 	int		**mtx;
+	int		buf[8];
+	int		scale;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
@@ -51,5 +53,10 @@ t_glb	*fdf_initializemtx(int argc, char **argv);
 void	fdf_freelines(char ***l);
 void	fdf_freemtx(int **mtx);
 void	fdf_freeglb(t_glb *glb);
+
+void	fdf_initializemlx(t_glb *glb);
+void	fdf_put_pixel_img(t_glb *glb, int x, int y, int c);
+
+void	fdf_bresenham(t_glb *glb);
 
 #endif
