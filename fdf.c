@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:13:08 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/04 21:20:56 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:38:57 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,30 +45,30 @@ void	fdf_draw(t_glb *glb)
 	if (!glb)
 		return ;
 	x = 0;
-	while (x < glb->x)
+	while (x < glb->x - 1)
 	{
 		y = 0;
-		while (y < glb->y)
+		while (y < glb->y - 1)
 		{
 			glb->buf[0] = x;
 			glb->buf[1] = y;
 			glb->buf[2] = (x + 1);
 			glb->buf[3] = (y);
-			glb->buf[4] = 0xff0000;
-			glb->buf[5] = 0xffffff;
+			glb->buf[4] = glb->mtx[y][2 * x + 1];
+			glb->buf[5] = glb->mtx[y][2 * (x + 1) + 1];
 			fdf_bresenham(glb);
 			glb->buf[0] = x;
 			glb->buf[1] = y;
 			glb->buf[2] = (x);
 			glb->buf[3] = (y + 1);
-			glb->buf[4] = 0xff0000;
-			glb->buf[5] = 0xffffff;
+			glb->buf[4] = glb->mtx[y][2 * x + 1];
+			glb->buf[5] = glb->mtx[y + 1][2 * x + 1];
 			fdf_bresenham(glb);
 			y++;
 		}
-		x++;
 		ft_putnbr_fd(x, 1);
 		ft_putstr_fd("\t", 1);
+		x++;
 	}
 }
 
