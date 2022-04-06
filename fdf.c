@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:13:08 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 16:54:31 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:11:47 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	fdf_setdots(t_glb *glb, int x, int y, int even)
 	z = glb->mtx[y][2 * x];
 	glb->buf[2 * even] = x * glb->scale;
 	glb->buf[2 * even + 1] = y * glb->scale;
-	glb->buf[2 * even] = (x - y) * glb->scale * cos(0.9) + z;
-	glb->buf[2 * even + 1] = (x + y) * glb->scale * sin(0.9) - z;
+	glb->buf[2 * even] = (x - y) * glb->scale * cos(glb->angle) + z;
+	glb->buf[2 * even + 1] = (x + y) * glb->scale * sin(glb->angle) - z;
 	glb->buf[2 * even] += glb->buf[8];
 	glb->buf[2 * even + 1] += glb->buf[9];
 	glb->buf[4 + even] = glb->mtx[y][2 * x + 1];
@@ -80,6 +80,7 @@ void	fdf_draw(t_glb *glb)
 void	fdf_hook_base(t_glb *glb)
 {
 	glb->scale = FDF_SCALE;
+	glb->angle = FDF_ANGLE;
 	glb->buf[8] = 0;
 	glb->buf[9] = 0;
 }
@@ -103,15 +104,19 @@ int	fdf_hook(int key, t_glb *glb)
 		glb->buf[8] += glb->x * 3;
 	else if (key == 123)
 		glb->buf[8] -= glb->x * 3;
+	else if (key == 12)
+		glb->angle -= 0.05;
+	else if (key == 14)
+		glb->angle += 0.05;
 	else if (key == 125)
 		glb->buf[9] += glb->y * 3;
 	else if (key == 126)
 		glb->buf[9] -= glb->y * 3;
-	else if (key == 78 && glb->scale > 2)
+	else if ((key == 78 || key == 27) && glb->scale > 2)
 		glb->scale /= 2;
-	else if (key == 69)
+	else if (key == 69 || key == 24)
 		glb->scale *= 2;
-	else if (key == 82)
+	else if (key == 82 || key == 29)
 		fdf_hook_base(glb);
 	else if (key == 53)
 		exit (0);

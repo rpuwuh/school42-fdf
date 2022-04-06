@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 05:24:29 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 16:06:04 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:08:15 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_glb	*fdf_setglb(char ***lines)
 	glb->win_ptr = 0;
 	glb->img_ptr = 0;
 	glb->scale = FDF_SCALE;
+	glb->angle = FDF_ANGLE;
 	return (glb);
 }
 
