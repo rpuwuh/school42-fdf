@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:21:49 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 15:47:57 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:52:32 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	fdf_bresenham(t_glb *glb)
 	{
 		glb->buf[6] = x;
 		glb->buf[7] = y;
-		fdf_put_pixel_img(glb, x, y, fdf_bres_color(glb));
+		if (x > 0 && y > 0)
+			fdf_put_pixel_img(glb, x, y, fdf_bres_color(glb));
 		x += x_step;
 		y += y_step;
 	}
