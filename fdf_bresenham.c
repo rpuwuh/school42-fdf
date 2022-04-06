@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:21:49 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/04 21:21:17 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:47:57 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,18 @@ void	fdf_bresenham(t_glb *glb)
 	double	x;
 	double	y;
 
-	glb->buf[0] *= glb->scale;
-	glb->buf[1] *= glb->scale;
-	glb->buf[2] *= glb->scale;
-	glb->buf[3] *= glb->scale;
 	x = glb->buf[0];
 	y = glb->buf[1];
+	if (x > FDF_WIDTH)
+		x = FDF_WIDTH;
+	if (y > FDF_HEIGHT)
+		y = FDF_HEIGHT;
 	x_step = x - glb->buf[2];
 	y_step = y - glb->buf[3];
 	x_step /= fdf_maxabsint (x_step, y_step);
 	y_step /= fdf_maxabsint (x - glb->buf[2], y_step);
-	while ((int)(x - glb->buf[2]) || (int)(y - glb->buf[3]))
+	while (((int)(x - glb->buf[2]) || (int)(y - glb->buf[3]))
+			&& x < FDF_WIDTH && y < FDF_HEIGHT)
 	{
 		glb->buf[6] = x;
 		glb->buf[7] = y;

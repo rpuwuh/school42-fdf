@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/04 20:44:57 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:33:32 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_glb
 	int		x;
 	int		y;
 	int		**mtx;
-	int		buf[8];
+	int		buf[10];
 	int		scale;
 	void	*mlx_ptr;
 	void	*win_ptr;

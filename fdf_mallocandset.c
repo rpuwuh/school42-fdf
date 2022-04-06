@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 05:24:29 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/04 21:18:57 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 15:33:39 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ t_glb	*fdf_setglb(char ***lines)
 		i++;
 	glb->x = i;
 	i = 0;
-	while (i < 8)
+	while (i < 10)
 		glb->buf [i++] = 0;
 	glb->mlx_ptr = 0;
 	glb->win_ptr = 0;
 	glb->img_ptr = 0;
-	glb->scale = 50;
+	glb->scale = 30;
 	return (glb);
 }
 

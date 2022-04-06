@@ -6,11 +6,24 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 04:38:26 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/03 05:02:27 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:55:01 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	ft_atoi_hex_convert(char c)
+{
+	int	res;
+
+	if (ft_isdigit(c))
+		res = c - '0';
+	else if (c >= 'a' && c <= 'f')
+		res = 10 + c - 'a';
+	else
+		res = 10 + c - 'A';
+	return (res);
+}
 
 static int	ft_readnums(const char *str, char sign)
 {
@@ -19,14 +32,13 @@ static int	ft_readnums(const char *str, char sign)
 
 	i = 0;
 	res = 0;
-	if (ft_isdigit(str[i]) || (str[i] >= 'a' && str[i] <= 'f'))
+	if (ft_isdigit(str[i]) || (str[i] >= 'a' && str[i] <= 'f')
+		|| (str[i] >= 'A' && str[i] <= 'F'))
 	{
-		while (ft_isdigit(str[i]) || (str[i] >= 'a' && str[i] <= 'f'))
+		while (ft_isdigit(str[i]) || (str[i] >= 'a' && str[i] <= 'f')
+			|| (str[i] >= 'A' && str[i] <= 'F'))
 		{
-			if (ft_isdigit(str[i]))
-				res = res * 16 + str[i] - '0';
-			else
-				res = res * 16 + 10 + str[i] - 'a';
+			res = res * 16 + ft_atoi_hex_convert(str[i]);
 			i++;
 			if (res * sign > 2147483647)
 				return (-1);
