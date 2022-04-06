@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 17:16:03 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:39:19 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ void	fdf_initializemlx(t_glb *glb);
 void	fdf_put_pixel_img(t_glb *glb, int x, int y, int c);
 
 void	fdf_bresenham(t_glb *glb);
+
+void	fdf_draw(t_glb *glb);
 
 #endif
