@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 17:19:45 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/01/02 19:43:45 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/09 20:10:55 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*get_next_line_old(char **tail, int fd)
 	if (BUFFER_SIZE < 1 || fd < 0 || fd > MAX_BUFFER)
 		return (0);
 	if (tail && *tail)
-		s = ft_strjoin(*tail, "");
+		s = gnl_strjoin(*tail, "");
 	else
 		s = ft_newstring();
 	if (!s)
 		return (0);
 	readc = 1;
-	while (readc > 0 && !ft_strchr(s, '\n'))
+	while (readc > 0 && !gnl_strchr(s, '\n'))
 	{
 		s = ft_gnl_buffer(&readc, fd, &s);
 		if (!s)
@@ -56,11 +56,11 @@ char	*ft_gnl_trim(ssize_t readc, char **tail_p, char **str_p)
 	char	*temp;
 	size_t	len;
 
-	if (!(readc || ft_strchr(*str_p, '\n')))
+	if (!(readc || gnl_strchr(*str_p, '\n')))
 	{
 		temp = 0;
 		if (!(**str_p == '\0'))
-			temp = ft_substr(*str_p, 0, ft_strchr(*str_p, '\0') - *str_p + 1);
+			temp = gnl_substr(*str_p, 0, gnl_strchr(*str_p, '\0') - *str_p + 1);
 		ft_cleanfreestring (tail_p);
 		ft_cleanfreestring (str_p);
 		return (temp);
@@ -70,10 +70,10 @@ char	*ft_gnl_trim(ssize_t readc, char **tail_p, char **str_p)
 		ft_cleanfreestring (str_p);
 		return (0);
 	}
-	len = ft_strchr(*str_p, '\n') - *str_p;
-	temp = ft_substr(*str_p, 0, len + 1);
+	len = gnl_strchr(*str_p, '\n') - *str_p;
+	temp = gnl_substr(*str_p, 0, len + 1);
 	ft_cleanfreestring (tail_p);
-	*tail_p = ft_substr (*str_p, len + 1, BUFFER_SIZE + 1);
+	*tail_p = gnl_substr (*str_p, len + 1, BUFFER_SIZE + 1);
 	ft_cleanfreestring (str_p);
 	return (temp);
 }

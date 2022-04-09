@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 17:39:19 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/09 21:06:20 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define FDF_HEIGHT 720
 # define FDF_WIDTH 1280
 # define FDF_SCALE 20
-# define FDF_ANGLE 0.85
+# define FDF_ANGLE 0.5
 
 # include <fcntl.h>
 # include <math.h>

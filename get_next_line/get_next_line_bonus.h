@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 14:44:04 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/04 17:24:21 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/09 20:17:07 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@
 #  define MAX_BUFFER 255
 # endif
 
-# include "../libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 
+size_t		gnl_strlen(const char	*s);
+char		*gnl_strchr(const char *s, int c);
+char		*gnl_strjoin(char const *s1, char const *s2);
 char		*ft_gnl_buffer(ssize_t *readc, int fd, char **str_p);
+char		*gnl_substr(char *s, unsigned int start, size_t len);
 
 char		*get_next_line_old(char **tail, int fd);
 void		ft_cleanfreestring(char **s);

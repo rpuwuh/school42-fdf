@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:13:08 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 17:40:18 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/09 21:07:50 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	fdf_hook_base(t_glb *glb)
 {
 	glb->scale = FDF_SCALE;
 	glb->angle = FDF_ANGLE;
-	glb->buf[8] = 0;
-	glb->buf[9] = 0;
+	glb->buf[8] = 100;
+	glb->buf[9] = 100;
 }
 
 void	fdf_redraw(t_glb *glb)
@@ -61,18 +61,18 @@ int	fdf_hook(int key, t_glb *glb)
 {
 	ft_putnbr_fd(key, 1);
 	ft_putstr_fd("\t", 1);
-	if (key == 124)
-		glb->buf[8] += glb->x * 3;
+	if (key == 124 && glb->buf[8] < glb->x * 3 + FDF_WIDTH)
+		glb->buf[8] += glb->x * 2;
 	else if (key == 123)
-		glb->buf[8] -= glb->x * 3;
+		glb->buf[8] -= glb->x * 2;
+	else if (key == 125)
+		glb->buf[9] += glb->y * 2;
+	else if (key == 126)
+		glb->buf[9] -= glb->y * 2;
 	else if (key == 12)
 		glb->angle -= 0.05;
 	else if (key == 14)
 		glb->angle += 0.05;
-	else if (key == 125)
-		glb->buf[9] += glb->y * 3;
-	else if (key == 126)
-		glb->buf[9] -= glb->y * 3;
 	else if ((key == 78 || key == 27) && glb->scale > 2)
 		glb->scale /= 2;
 	else if (key == 69 || key == 24)
@@ -90,6 +90,7 @@ int	main(int argc, char **argv)
 	t_glb	*glb;
 
 	glb = fdf_initializemtx(argc, argv);
+	fdf_putmtx(glb);
 	fdf_initializemlx(glb);
 	fdf_draw(glb);
 	mlx_key_hook(glb->win_ptr, fdf_hook, glb);
