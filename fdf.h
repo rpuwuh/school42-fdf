@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/12 20:06:22 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:43:43 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,9 @@ void	fdf_put_pixel_img(t_glb *glb, int x, int y, int c);
 void	fdf_bresenham(t_glb *glb);
 
 void	fdf_draw(t_glb *glb);
+
+void	fdf_hook_base(t_glb *glb);
+void	fdf_redraw(t_glb *glb);
+int		fdf_hook(int key, t_glb *glb);
 
 #endif

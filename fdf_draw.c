@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:38:18 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/12 20:24:10 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:42:10 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ static void	fdf_setdots(t_glb *glb, int x, int y, int even)
 	z = x * (sin(glb->angles[0]) * sin(glb->angles[1])) + y
 		* (cos(glb->angles[0]) * sin(glb->angles[1])) + z
 		* (cos(glb->angles[1]));
-	// glb->buf[2 * even] *= glb->scale;
-	// glb->buf[2 * even + 1] *= glb->scale;
 	glb->buf[2 * even] += glb->buf[8];
 	glb->buf[2 * even + 1] += glb->buf[9];
 	glb->buf[4 + even] = glb->mtx[y][2 * x + 1];
