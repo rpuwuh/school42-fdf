@@ -6,11 +6,26 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 05:24:29 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/06 17:08:15 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:58:49 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	fdf_set_glb_const(t_glb *glb)
+{
+	if (!glb)
+		return ;
+	glb->mlx_ptr = 0;
+	glb->win_ptr = 0;
+	glb->img_ptr = 0;
+	glb->scale = FDF_SCALE;
+	glb->angles[0] = FDF_ANGLE;
+	glb->angles[1] = FDF_ANGLE;
+	glb->angles[2] = FDF_ANGLE;
+	glb->angles[3] = FDF_ANGLE;
+	return ;
+}
 
 t_glb	*fdf_setglb(char ***lines)
 {
@@ -33,41 +48,8 @@ t_glb	*fdf_setglb(char ***lines)
 	i = 0;
 	while (i < 10)
 		glb->buf [i++] = 0;
-	glb->mlx_ptr = 0;
-	glb->win_ptr = 0;
-	glb->img_ptr = 0;
-	glb->scale = FDF_SCALE;
-	glb->angle = FDF_ANGLE;
+	fdf_set_glb_const(glb);
 	return (glb);
-}
-
-int	**fdf_mallocmtx(t_glb	*glb)
-{
-	int	i;
-	int	j;
-
-	if (!glb)
-		return (0);
-	glb->mtx = (int **) malloc (sizeof(int *) * (glb->y + 1));
-	if (!glb->mtx)
-		return (0);
-	i = 0;
-	while (i < glb->y)
-	{
-		glb->mtx[i++] = (int *) malloc (sizeof(int) * (glb->x * 2));
-		j = 0;
-		if (!glb->mtx[i - 1])
-		{
-			while (j < i)
-				free(glb->mtx[j]);
-			free(glb->mtx);
-			return (0);
-		}
-		while (j < (glb->x * 2))
-			glb->mtx[i - 1][j++] = 0;
-	}
-	glb->mtx[glb->y + 1] = 0;
-	return (glb->mtx);
 }
 
 static char	*fdf_safestr(char ***s, int i, int j)

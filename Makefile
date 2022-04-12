@@ -5,7 +5,7 @@ OBJDIR= ./obj/
 HEADER = fdf.h
 
 SRC = fdf_atoi_hex.c fdf_checkfile.c fdf_mallocandset.c fdf_free.c fdf_mlx_funcs.c \
-	fdf_bresenham.c fdf_draw.c
+	fdf_bresenham.c fdf_draw.c fdf_mallocmtx.c
 
 SRC_O = $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

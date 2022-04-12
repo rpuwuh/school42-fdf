@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 01:10:46 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/09 21:06:20 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:06:22 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define FDF_HEIGHT 720
 # define FDF_WIDTH 1280
 # define FDF_SCALE 20
-# define FDF_ANGLE 0.5
+# define FDF_ANGLE 0.785
 
 # include <fcntl.h>
 # include <math.h>
@@ -31,7 +31,7 @@ typedef struct s_glb
 	int		y;
 	int		**mtx;
 	int		buf[10];
-	double	angle;
+	double	angles[4];
 	int		scale;
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -48,8 +48,9 @@ char	*ft_stradd(char	**dest, char *src);
 char	**fdf_mallocfile(char *file);
 char	***fdf_secondsplit(char *file);
 
-t_glb	*fdf_setglb(char ***lines);
 int		**fdf_mallocmtx(t_glb	*glb);
+
+t_glb	*fdf_setglb(char ***lines);
 void	fdf_setmtx(t_glb *glb, char	***lines);
 t_glb	*fdf_initializemtx(int argc, char **argv);
 
