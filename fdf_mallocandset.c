@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 05:24:29 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/12 18:58:49 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:11:19 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ static void	fdf_set_glb_const(t_glb *glb)
 	glb->mlx_ptr = 0;
 	glb->win_ptr = 0;
 	glb->img_ptr = 0;
-	glb->scale = FDF_SCALE;
-	glb->angles[0] = FDF_ANGLE;
-	glb->angles[1] = FDF_ANGLE;
-	glb->angles[2] = FDF_ANGLE;
+	glb->scale = FDF_WIDTH / (1.5 * glb->x);
+	if (!glb->scale)
+		glb->scale = 2;
+	glb->angles[0] = -M_PI / 5;
+	glb->buf[8] = 20;
+	glb->buf[9] = 360;
+	glb->angles[1] = 1;
+	glb->angles[2] = 0;
 	glb->angles[3] = FDF_ANGLE;
 	return ;
 }

@@ -6,25 +6,11 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:38:18 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/12 20:42:10 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:41:40 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*static void	fdf_setdots(t_glb *glb, int x, int y, int even)
-{
-	int	z;
-
-	z = glb->mtx[y][2 * x];
-	glb->buf[2 * even] = (x * cos(glb->angles[0])
-			- y * sin(glb->angles[0])) * glb->scale + z * cos(glb->angles[1]);
-	glb->buf[2 * even + 1] = (x * sin(glb->angles[0])
-			+ y * cos(glb->angles[0])) * glb->scale - z * sin(glb->angles[1]);
-	glb->buf[2 * even] += glb->buf[8];
-	glb->buf[2 * even + 1] += glb->buf[9];
-	glb->buf[4 + even] = glb->mtx[y][2 * x + 1];
-}*/
 
 static void	fdf_setdots(t_glb *glb, int x, int y, int even)
 {
@@ -36,17 +22,14 @@ static void	fdf_setdots(t_glb *glb, int x, int y, int even)
 				* sin(glb->angles[2]))
 			+ y * (-cos(glb->angles[2]) * sin(glb->angles[0])
 				- cos(glb->angles[0]) * cos(glb->angles[1])
-				* sin(glb->angles[2]))
-			+ z * (sin(glb->angles[1]) * sin(glb->angles[2]))) * glb->scale;
+				* sin(glb->angles[2])) + 0.15
+			* z * (sin(glb->angles[1]) * sin(glb->angles[2]))) * glb->scale;
 	glb->buf[2 * even + 1] = (x * (cos(glb->angles[1]) * cos(glb->angles[2])
 				* sin(glb->angles[0]) + cos(glb->angles[0])
 				* sin(glb->angles[2])) + y * (cos(glb->angles[0])
 				* cos(glb->angles[1]) * cos(glb->angles[2])
-				- sin(glb->angles[0]) * sin(glb->angles[2])) + z
+				- sin(glb->angles[0]) * sin(glb->angles[2])) + 0.15 * z
 			* (-cos(glb->angles[2]) * sin (glb->angles[1]))) * glb->scale;
-	z = x * (sin(glb->angles[0]) * sin(glb->angles[1])) + y
-		* (cos(glb->angles[0]) * sin(glb->angles[1])) + z
-		* (cos(glb->angles[1]));
 	glb->buf[2 * even] += glb->buf[8];
 	glb->buf[2 * even + 1] += glb->buf[9];
 	glb->buf[4 + even] = glb->mtx[y][2 * x + 1];
