@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 05:27:05 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/03 05:33:37 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:20:37 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fdf_freemtx(int **mtx)
 	if (!mtx || !*mtx)
 		return ;
 	i = 0;
-	while (mtx[i])
+	while (mtx && mtx[i])
 		free (mtx[i++]);
 	free (mtx[i]);
 	free (mtx);
@@ -54,15 +54,15 @@ void	fdf_freeglb(t_glb *glb)
 		fdf_freemtx(glb->mtx);
 		glb->mtx = 0;
 	}
-	if (glb->win_ptr)
-	{
-		mlx_destroy_window(glb->mlx_ptr, glb->win_ptr);
-		glb->win_ptr = 0;
-	}
 	if (glb->img_ptr)
 	{
 		mlx_destroy_image(glb->mlx_ptr, glb->img_ptr);
 		glb->img_ptr = 0;
+	}
+	if (glb->win_ptr)
+	{
+		mlx_destroy_window(glb->mlx_ptr, glb->win_ptr);
+		glb->win_ptr = 0;
 	}
 	if (glb->mlx_ptr)
 	{

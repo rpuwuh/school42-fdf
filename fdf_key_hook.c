@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:42:32 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/04/13 20:08:16 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:17:41 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	fdf_hook_base(int key, t_glb *glb)
 {
-	// glb->scale = FDF_SCALE;
 	glb->angles[0] = 0;
 	glb->angles[1] = 0;
 	glb->angles[2] = 0;
@@ -69,8 +68,6 @@ static void	fdf_hook_angles(int key, t_glb *glb)
 
 int	fdf_hook(int key, t_glb *glb)
 {
-	ft_putnbr_fd(key, 1);
-	ft_putstr_fd("\t", 1);
 	if (key == 124 && glb->buf[8] < glb->x * 3 + FDF_WIDTH)
 		glb->buf[8] += glb->scale * 3;
 	else if (key == 123)
